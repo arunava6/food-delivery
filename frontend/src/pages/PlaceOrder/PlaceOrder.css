@@ -1,0 +1,83 @@
+.place-order{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 100px;
+
+}
+.place-order-left{
+    width: 100%;
+    max-width: max(30%,500px);
+}
+.place-order-left .title{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 50px;
+
+}
+
+.place-order-left input{
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    outline-color: tomato;
+}
+.place-order-left .multi-fields{
+    display: flex;
+    gap: 10px;
+}
+.place-order-right{
+    width: 100%;
+    max-width: max(40%,500px);
+
+}
+.place-order .cart-total button{
+    margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+/* PlaceOrder.css */
+.payment-method-section {
+    margin: 20px 0;
+  }
+  
+  .payment-method-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .payment-method-options {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .payment-option {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .payment-option.selected {
+    border-color: tomato;
+    background-color: rgb(255, 217, 210);
+  }
+  
+  .payment-option:hover {
+    border-color:tomato;
+  }
