@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../Context/StoreContext'
 import { useNavigate } from 'react-router-dom';
-const Cart = () => {
+const Cart = ({setShowLogin}) => {
 
   const { cartItems, food_list, removeFromCart,getTotalCartAmount,url,token } = useContext(StoreContext);
 
@@ -17,6 +17,12 @@ const Cart = () => {
     }else{
       setShowPopup(true);
     }
+  };
+
+
+  const handleLoginPopup = () => {
+    setShowLogin(true);  // Trigger the login popup
+    setShowPopup(false);  // Close the cart popup
   };
 
 
@@ -92,12 +98,12 @@ const Cart = () => {
         <div className="popup">
           <div className="popup-content">
             <p>Please create an account first!</p>
-            <button onClick={() => navigate('/signup')}>Sign Up</button>
+            <button onClick={handleLoginPopup}>Sign Up</button>
             <button onClick={() => setShowPopup(false)}>Close</button>
           </div>
         </div>
       )}
-      
+
 
     </div>
   )
