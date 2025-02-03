@@ -1,12 +1,23 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../Context/StoreContext'
 import { useNavigate } from 'react-router-dom';
 const Cart = () => {
 
-  const { cartItems, food_list, removeFromCart,getTotalCartAmount,url } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart,getTotalCartAmount,url,token } = useContext(StoreContext);
 
   const navigate=useNavigate();
+
+  const [showPopup,setShowPopup] = useState(false);
+  const isLoggedIn =  !!token;
+
+  const handleCheckout=()=>{
+    if(isLoggedIn){
+      navigate('/order');
+    }else{
+      setShowPopup(true);
+    }
+  };
 
 
 
@@ -60,7 +71,10 @@ const Cart = () => {
               <b>Rs. {getTotalCartAmount()===0?0:getTotalCartAmount()+20}</b>
             </div>
           </div>
-          <button onClick={()=>navigate('/order')} >PROCEED TO CHECKOUT</button>
+          {/* <button onClick={()=>navigate('/order')} >PROCEED TO CHECKOUT</button> */}
+          <button onClick={handleCheckout} >PROCEED TO CHECKOUT</button>
+
+
         </div>
         <div className="cart-promocode">
           <div>
@@ -72,8 +86,31 @@ const Cart = () => {
           </div>
         </div>
       </div>
+
+
+      {showPopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <p>Please create an account first!</p>
+            <button onClick={() => navigate('/signup')}>Sign Up</button>
+            <button onClick={() => setShowPopup(false)}>Close</button>
+          </div>
+        </div>
+      )}
+      
+
     </div>
   )
 }
 
 export default Cart
+
+
+
+
+
+
+
+
+
+
